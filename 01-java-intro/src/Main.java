@@ -1,3 +1,4 @@
+import course.spring.model.Person;
 import course.spring.model.User;
 
 import java.time.LocalDate;
@@ -8,19 +9,19 @@ import static course.spring.model.Role.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<User> users = new ArrayList<>();
-        users.add(new User("John", "Smith", "r","g"));
-        users.add(new User("Ivan", "Petrov", "g","d"));
-        users.add(new User("Maria", "Hristova", "g","g"));
-        users.add(new User("Maya", "Dimitrova", LocalDate.of(1984,8,19), "g","g", ADMIN, "m@gmail.com"));
-  //      users.forEach(System.out::println);
+        List<Person> persons = new ArrayList<>();
+        persons.add(new User("John", "Smith", "r","g"));
+        persons.add(new User("Ivan", "Petrov", "g","d"));
+        persons.add(new Person("Ned", "Dim",LocalDate.of(1984,8,19)));
+        persons.add(new User("Maya", "Dimitrova", LocalDate.of(1984,8,19), "g","g", ADMIN, "m@gmail.com"));
+  //      persons.forEach(System.out::println);
 
-        for(User u : users){
+        for(Person u : persons){
             System.out.println(u);
         }
         System.out.println("=================================");
-        for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
+        for(int i = 0; i < persons.size(); i++) {
+            System.out.println(persons.get(i));
         }
     }
 }
