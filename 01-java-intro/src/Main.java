@@ -12,8 +12,8 @@ public class Main {
         users.add(new User("Maria", "Hristova", "g","g"));
   //      users.forEach(System.out::println);
 
-        for(User p : users){
-            System.out.println(p);
+        for(User u : users){
+            System.out.println(u);
         }
         System.out.println("=================================");
         for(int i = 0; i < users.size(); i++) {
