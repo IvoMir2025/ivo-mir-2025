@@ -55,6 +55,7 @@ public class User extends Person{
     @Override
     public String toString() {
         return "User{"  +
+                "id='" + getId() + '\'' +
                 ", firstName='" + getFirstName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
                 ", birthDate='" + getBirthDate() + '\'' +
