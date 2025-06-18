@@ -4,6 +4,7 @@ import course.spring.dao.impl.LongIdGenerator;
 import course.spring.dao.impl.RepositoryInMemory;
 import course.spring.dao.impl.UserRepositoryInMemory;
 import course.spring.model.Person;
+import course.spring.model.Role;
 import course.spring.model.User;
 
 import java.time.LocalDate;
@@ -15,33 +16,27 @@ import static course.spring.model.Role.*;
 public class Main {
     public static void main(String[] args) {
         List<User> users = new ArrayList<>();
-        users.add(new User("John", "Smith", "r","g"));
-        users.add(new User("Ivan", "Petrov", "g","d"));
-        // users.add(new Person("Ned", "Dim",LocalDate.of(1984,8,19)));
-        users.add(new User("Maya", "Dimitrova", LocalDate.of(1984,8,19), "maya","g", ADMIN, "m@gmail.com"));
-  //      users.forEach(System.out::println);
+        users.add(new User("John", "Smith", "john", "john123"));
+        users.add(new User("Ivan", "Petrov", "ivan", "ivan123"));
+        users.add(new User("Maria", "Hristova", "maria", "maria123"));
+//        persons.add(new Person("Nedyalko", "Dimitrov", LocalDate.of(1979, 7,13)));
+        users.add(new User("Maya", "Dimitrova", LocalDate.of(1984, 8,19),
+                "maya", "maya123", ADMIN, "maya@gmail.com"));
+//        user.forEach(System.out::println);
 
         // Create UserRepository with LongIdGenerator
-        //Repository<Long, User> userRepo = new RepositoryInMemory<>(new LongIdGenerator());
         UserRepository userRepo = new UserRepositoryInMemory(new LongIdGenerator());
 
-        for(User u : users){
+        for(User u : users) {
             userRepo.create(u);
-            //System.out.println(u);
         }
 
-        System.out.println("=================================");
-
-        //Get all users from repo
-
+        // Get all users from repo
         var allUsers = userRepo.findAll();
         allUsers.forEach(System.out::println);
 
-       for(int i = 0; i < users.size(); i++) {
-            System.out.println(users.get(i));
-        }
-
-       //Find the user by username
+        // Find user by username
         System.out.println(userRepo.findByUsername("maya"));
+
     }
 }

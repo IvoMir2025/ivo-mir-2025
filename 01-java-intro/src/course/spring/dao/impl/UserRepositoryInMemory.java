@@ -7,7 +7,6 @@ import course.spring.model.User;
 import java.util.Optional;
 
 public class UserRepositoryInMemory extends RepositoryInMemory<Long, User> implements UserRepository {
-
     public UserRepositoryInMemory(IdGenerator<Long> idGenerator) {
         super(idGenerator);
     }

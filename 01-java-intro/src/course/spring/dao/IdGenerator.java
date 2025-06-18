@@ -1,5 +1,5 @@
 package course.spring.dao;
 
-public interface IdGenerator <K> {
+public interface IdGenerator<K> {
     K getNextId();
 }
