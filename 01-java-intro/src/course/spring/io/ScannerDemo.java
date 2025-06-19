@@ -3,12 +3,15 @@ package course.spring.io;
 import course.spring.exceptions.CustomDatabaseException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ScannerDemo {
     public String readDataFromFile(String filename) throws CustomDatabaseException {
         StringBuilder sb = new StringBuilder();
-        try (Scanner s = new Scanner(new BufferedReader(new FileReader(filename)))) {
+        try (Scanner s = new Scanner(new BufferedReader(new InputStreamReader(
+                new FileInputStream(filename), StandardCharsets.UTF_8)))) {
+                //Scanner s = new Scanner(new BufferedReader(new FileReader(filename)))) {
             while (s.hasNext()) {
                 sb.append(s.nextLine()).append("\n");
             }
