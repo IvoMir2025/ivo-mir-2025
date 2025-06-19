@@ -11,10 +11,13 @@ public class StreamDemo03 {
     public static void main(String[] args) {
 
         var books = Arrays.stream(MOCK_BOOKS);
+//        var compStringAlphabetic = Comparator.<String, String>comparing(String::toLowerCase);
         var totalJavaBookPrice = books
-                .filter( book -> book.getTitle().toLowerCase().contains("java"))
-                .map(Book::getPrice)
-                .reduce(0D, ( acc, val) -> acc + val);
-        System.out.printf("Total Java books price: %8.2f\n", totalJavaBookPrice);
+                .filter(book -> book.getTitle().toLowerCase().contains("java"))
+                .mapToDouble(Book::getPrice)
+                .average();
+//                .reduce(0D, (acc, val) -> acc + val);
+
+        System.out.printf("Total Java books price: %8.2f\n", totalJavaBookPrice.getAsDouble());
     }
 }

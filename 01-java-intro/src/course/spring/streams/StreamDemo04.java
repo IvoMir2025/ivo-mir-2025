@@ -11,12 +11,14 @@ public class StreamDemo04 {
     public static void main(String[] args) {
 
         var books = Arrays.stream(MOCK_BOOKS);
+//        var compStringAlphabetic = Comparator.<String, String>comparing(String::toLowerCase);
         books
-                .filter( book -> book.getTitle().toLowerCase().contains("java"))
+                .filter(book -> book.getTitle().toLowerCase().contains("java"))
                 .map(Book::getTitle)
-                .flatMap(title-> Arrays.stream(title.split("\\W+")))
+                .flatMap(title -> Arrays.stream(title.split("\\W+")))
                 .distinct()
                 .sorted(Comparator.comparing(String::toLowerCase))
                 .forEach(System.out::println);
+
     }
 }
