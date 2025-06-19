@@ -1,0 +1,18 @@
+1: package course.spring.io;
+2: 
+3: import java.io.IOException;
+4: import java.nio.charset.Charset;
+5: import java.nio.file.Files;
+6: import java.nio.file.Paths;
+7: 
+8: public class FilesDemo01 {
+9:     public static void main(String[] args) throws IOException {
+10:         var source = Paths.get("./src/course/spring/io", "FilesDemo01.java")
+11:                 .toAbsolutePath()
+12:                 .normalize();
+13:         System.out.printf("File '%s' exists: %b\n", source, Files.exists(source));
+14:         var charset = Charset.forName("utf8");
+15:         var lines = Files.lines(source,charset);
+16:         lines.forEach((System.out::println));
+17:     }
+18: }
