@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/hello")
 public class HelloRestController {
 
-    @GetMapping({"","{name}"})
+    @GetMapping({"", "{name}"})
     public String sayHello(@PathVariable(name = "name", required = false) String name) {
         return String.format("Hello %s, from Spring MVC!", name != null ? name : "Guest");
     }
@@ -19,10 +19,10 @@ public class HelloRestController {
             @RequestParam(value = "patient", required = false)String patient
             ) {
         var sb = new StringBuilder();
-        sb.append("From: ").append(from != null ? from : "not specified");
-        sb.append("<br>To: ").append(to != null ? to : "not specified");
-        sb.append("<br>Doctor: ").append(doctor != null ? doctor : "not specified");
-        sb.append("<br>Patient: ").append(patient != null ? patient : "not specified");
+        sb.append("From: ").append(from != null ? from : "not_specified");
+        sb.append("<br>To: ").append(to != null ? to : "not_specified");
+        sb.append("<br>Doctor: ").append(doctor != null ? doctor : "not_specified");
+        sb.append("<br>Patient: ").append(patient != null ? patient : "not_specified");
         return sb.toString();
     }
 }
