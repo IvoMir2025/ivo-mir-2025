@@ -12,6 +12,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
+
+import static org.antlr.v4.runtime.misc.Utils.count;
 
 @RestController
 @RequestMapping("/api/users")
@@ -19,9 +22,19 @@ public class UsersRestController {
     @Autowired
     private UserRepository userRepo;
 
-    @GetMapping
+   /* @GetMapping
     public List<User> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    @GetMapping
+    public Optional<User> getUserByID() {
+        return userRepo.findById(3L);
+    } */
+
+   @GetMapping
+    public long getUsersCount() {
+        return userRepo.count();
     }
 
     @PostMapping
