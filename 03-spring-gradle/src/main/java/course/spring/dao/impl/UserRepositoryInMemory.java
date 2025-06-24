@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
-@Scope("singleton") // moze i bez tova
+//@Repository
+//@Scope("singleton") // moze i bez tova
 public class UserRepositoryInMemory extends RepositoryInMemory<Long, User> implements UserRepository {
 
     //public UserRepositoryInMemory(IdGenerator<Long> idGenerator) {
@@ -22,7 +22,7 @@ public class UserRepositoryInMemory extends RepositoryInMemory<Long, User> imple
         return theInstance;
     }
 
-    @Autowired
+    // @Autowired -- prez XML
     public UserRepositoryInMemory(IdGenerator<Long> idGenerator) {
         super(idGenerator);
     }

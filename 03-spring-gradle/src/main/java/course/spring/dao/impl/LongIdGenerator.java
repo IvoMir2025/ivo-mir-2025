@@ -5,9 +5,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-@Component
+//@Component -- pravi se XML configuration
 public class LongIdGenerator implements IdGenerator<Long> {
     private AtomicLong nextId = new AtomicLong(0L);
+    public void setInitialValue(long initVal){
+        nextId.set(initVal);
+    }
     @Override
     public Long getNextId() {
         return nextId.incrementAndGet();

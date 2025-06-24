@@ -92,4 +92,5 @@ public class UserServiceImpl implements UserService, BeanNameAware, ApplicationC
     public long getUsersCount() {
         return userRepo.count();
     }
+
 }
