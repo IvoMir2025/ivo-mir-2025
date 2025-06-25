@@ -10,6 +10,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+//@Service
 @Log
 public class UserServiceImpl implements UserService, BeanNameAware, ApplicationContextAware {
     private UserRepository userRepo;
@@ -25,7 +26,8 @@ public class UserServiceImpl implements UserService, BeanNameAware, ApplicationC
     private ApplicationContext ctx;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepo) {
+
+    public UserServiceImpl(@Qualifier("IN_MEMORY") UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
@@ -43,11 +45,11 @@ public class UserServiceImpl implements UserService, BeanNameAware, ApplicationC
     @PostConstruct
     public void afterInit() throws Exception {
         log.info(String.format("!!!!! Bean '%s' created.", beanName));
-        var repo = ctx.getBean(UserRepository.class);
-        log.info("!!!!!!!!!!!!! User repository: " + repo.toString());
-        var userNames = repo.findAll().stream()
-                .map(User::getName).collect(Collectors.joining(", "));
-        log.info(String.format("!!!!! Users:", userNames));
+//        var repo = ctx.getBean(UserRepository.class);
+//        log.info("!!!!!!!!!!!!! User repository: " + repo.toString());
+//        var userNames = repo.findAll().stream()
+//                .map(User::getName).collect(Collectors.joining(", "));
+//        log.info(String.format("!!!!! Users:", userNames));
     }
 
     @Override

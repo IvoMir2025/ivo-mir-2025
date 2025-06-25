@@ -46,7 +46,7 @@ public class DomainConfig {
     public UserService defaultUserService(
             UserRepository[] userRepository
     ){
-    log.info("!!!! NUM REPOS: " + userRepository.length);
+        log.info("!!!! NUM REPOS: " + userRepository.length);
         return new UserServiceImpl(new UserRepositoryMockImpl() {
             @Override
             public List<User> findAll() {
