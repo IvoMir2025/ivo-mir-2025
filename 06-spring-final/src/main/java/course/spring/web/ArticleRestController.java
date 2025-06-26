@@ -15,37 +15,27 @@ import java.util.List;
 @RequestMapping("/api/articles")
 public class ArticleRestController {
     @Autowired
-    private ArticleService ArticleService;
+    private ArticleService articleService;
 
     @GetMapping
     public List<Article> getAllArticles() {
-        return ArticleService.getAllArticles();
+        return articleService.getAllArticles();
     }
-
-//    @GetMapping("{id}")
-//    public ResponseEntity<Article> getArticleById(@PathVariable("id") Long id) {
-//        var result = ArticleRepo.findById(id);
-//        if(result.isPresent()) {
-//            return ResponseEntity.ok(ArticleRepo.findById(id).get());
-//        } else {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
     @GetMapping("count")
     public long getArticlesCount() {
-        return ArticleService.getArticlesCount();
+        return articleService.getArticlesCount();
     }
 
     @GetMapping("{id:\\d+}")
     public Article getArticleById(@PathVariable("id") Long id) {
-        return ArticleService.getArticleById(id);
+        return articleService.getArticleById(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Article> addArticle(@RequestBody Article Article) {
-        var newArticle = ArticleService.addArticle(Article);
+    public ResponseEntity<Article> addArticle(@RequestBody Article article) {
+        var newArticle = articleService.addArticle(article);
         return ResponseEntity.created(
                 ServletUriComponentsBuilder.fromCurrentRequestUri().pathSegment("{id}")
                         .buildAndExpand(newArticle.getId()).toUri()
@@ -53,18 +43,18 @@ public class ArticleRestController {
     }
 
     @PutMapping("{id}")
-    public Article updateArticle(@PathVariable("id") Long id, @RequestBody Article Article) {
-        if(!id.equals(Article.getId())) {
+    public Article updateArticle(@PathVariable("id") Long id, @RequestBody Article article) {
+        if(!id.equals(article.getId())) {
             throw new InvalidEntityDataException(
-                    String.format("Non-matching IDs in path '%s' and in request body '%s'.", id, Article.getId())
+                    String.format("Non-matching IDs in path '%s' and in request body '%s'.", id, article.getId())
             );
         }
-        return ArticleService.updateArticle(Article);
+        return articleService.updateArticle(article);
     }
 
     @DeleteMapping("{id}")
     public Article updateArticle(@PathVariable("id") Long id) {
-        return ArticleService.deleteArticleById(id);
+        return articleService.deleteArticleById(id);
     }
 
 
