@@ -1,9 +1,7 @@
 package course.spring.model;
 
-
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Objects;
@@ -13,8 +11,8 @@ import java.util.Set;
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @GeneratedValue(generator = "my_seq")
-//    @SequenceGenerator(name="my_seq", sequenceName = "ARTICLE_SEQ", allocationSize = 1)
+//    @GeneratedValue(generator="my_seq")
+//    @SequenceGenerator(name="my_seq",sequenceName="ARTICLE_SEQ", allocationSize=1)
     private Long id;
     private String title;
     private String content;
@@ -23,9 +21,8 @@ public class Article {
     @ManyToOne
     private User editor;
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime publishDate = LocalDateTime.now();
+    private LocalDateTime publishDate =  LocalDateTime.now();
     @ElementCollection(fetch = FetchType.EAGER)
-  //  @CollectionTable
     private Set<String> tags = Collections.emptySet();
     @ManyToMany
     private Set<Category> categories = Collections.emptySet();
@@ -132,14 +129,14 @@ public class Article {
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Article{");
-        sb.append("id=").append(id);
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", content='").append(content).append('\'');
-        sb.append(", author=").append(author);
-        sb.append(", editor=").append(editor);
-        sb.append(", publishDate=").append(publishDate);
-        sb.append(", tags=").append(tags);
-        sb.append(", categories=").append(categories);
+        sb.append("id=").append(getId());
+        sb.append(", title='").append(getTitle()).append('\'');
+        sb.append(", content='").append(getContent()).append('\'');
+        sb.append(", author=").append(getAuthor());
+        sb.append(", editor=").append(getEditor());
+        sb.append(", publishDate=").append(getPublishDate());
+        sb.append(", tags=").append(getTags());
+        sb.append(", categories=").append(getCategories());
         sb.append('}');
         return sb.toString();
     }

@@ -5,11 +5,11 @@ import course.spring.model.Category;
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> getAllCategorys();
+    List<Category> getAllCategories();
     Category getCategoryById(Long id);
-    Category getCategoryByCategoryname(String Categoryname);
-    Category addCategory(Category Category);
-    Category updateCategory(Category Category);
+    List<Category> getCategoriesByName(String name);
+    Category addCategory(Category category);
+    Category updateCategory(Category category);
     Category deleteCategoryById(Long id);
-    long getCategorysCount();
+    long getCategoriesCount();
 }

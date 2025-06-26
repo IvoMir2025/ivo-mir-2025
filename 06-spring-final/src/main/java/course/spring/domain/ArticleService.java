@@ -7,9 +7,9 @@ import java.util.List;
 public interface ArticleService {
     List<Article> getAllArticles();
     Article getArticleById(Long id);
-    Article getArticleByArticlename(String Articlename);
-    Article addArticle(Article Article);
-    Article updateArticle(Article Article);
+    List<Article> getArticleByTitle(String title);
+    Article addArticle(Article article);
+    Article updateArticle(Article article);
     Article deleteArticleById(Long id);
     long getArticlesCount();
 }

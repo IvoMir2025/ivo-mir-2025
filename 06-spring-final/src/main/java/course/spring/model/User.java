@@ -1,5 +1,6 @@
 package course.spring.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -16,9 +17,11 @@ public class User extends Person {
     private Role role = READER;
     private String email;
     @OneToMany(mappedBy = "author")
+    @JsonIgnore
     private List<Article> articlesAuthored = Collections.emptyList();
     @OneToMany(mappedBy = "editor")
-    private List<Article> articlesEdited = Collections.emptyList();
+    @JsonIgnore
+    private List<Article> articlesEdited = Collections.emptyList();;
 
     public User() {
         super();
@@ -76,6 +79,22 @@ public class User extends Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Article> getArticlesAuthored() {
+        return articlesAuthored;
+    }
+
+    public void setArticlesAuthored(List<Article> articlesAuthored) {
+        this.articlesAuthored = articlesAuthored;
+    }
+
+    public List<Article> getArticlesEdited() {
+        return articlesEdited;
+    }
+
+    public void setArticlesEdited(List<Article> articlesEdited) {
+        this.articlesEdited = articlesEdited;
     }
 
     @Override
