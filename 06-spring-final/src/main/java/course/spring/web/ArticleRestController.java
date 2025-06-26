@@ -12,7 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Articles")
+@RequestMapping("/api/articles")
 public class ArticleRestController {
     @Autowired
     private ArticleService ArticleService;
