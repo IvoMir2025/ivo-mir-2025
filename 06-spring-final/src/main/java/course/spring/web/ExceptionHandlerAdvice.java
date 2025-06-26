@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
-
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleEntityNotFound(NonexistingEntityException ex) {
         return ResponseEntity

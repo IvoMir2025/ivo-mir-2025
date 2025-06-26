@@ -1,6 +1,5 @@
 package course.spring.web;
 
-import course.spring.dao.UserRepository;
 import course.spring.domain.UserService;
 import course.spring.dto.ErrorResponse;
 import course.spring.exception.InvalidEntityDataException;
@@ -69,5 +68,6 @@ public class UsersRestController {
     public User updateUser(@PathVariable("id") Long id) {
         return userService.deleteUserById(id);
     }
+
 
 }

@@ -1,5 +1,6 @@
 package course.spring.web;
 
+import org.springframework.http.MediaType;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +11,6 @@ import static org.springframework.util.MimeTypeUtils.*;
 @RestController
 @RequestMapping("/api/hello")
 public class HelloRestController {
-
     @GetMapping({"name", "name/{name}"})
     public String sayHello(@PathVariable(name = "name", required = false) String name) {
         return String.format("Hello %s, from Spring MVC!", name != null ? name : "Guest");
@@ -36,8 +36,10 @@ public class HelloRestController {
         return String.format("<h1>Accept: %s</h1>", acceptHeader);
     }
 
-    @GetMapping(path = "headers", produces = APPLICATION_JSON_VALUE)
+   @GetMapping(path = "headers", produces = APPLICATION_JSON_VALUE)
     public Map<String, String> allHeaders(@RequestHeader MultiValueMap headers) {
         return headers.toSingleValueMap();
     }
+
+
 }
