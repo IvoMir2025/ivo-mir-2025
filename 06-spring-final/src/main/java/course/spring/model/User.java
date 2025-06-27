@@ -3,6 +3,10 @@ package course.spring.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,12 +27,15 @@ import static course.spring.model.Role.READER;
 public class User extends Person {
     @Basic(optional = false)
     @Column( nullable = false, updatable = false, length = 30)
+    @Size(min = 2, max = 30)
     private String username;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @Pattern(regexp = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
     private String password;
     private Role role = READER;
     @Basic(optional = false)
     @Column( nullable = false, length = 80)
+    @Email
     private String email;
     @OneToMany(mappedBy = "author")
     @JsonIgnore
